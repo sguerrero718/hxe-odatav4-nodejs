@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "/hana/shared/HXE/xs/controller_data/executionagent/executionroot/573318fb-5424-4e79-a854-40c1096512c2/app/META-INF/.sap_java_buildpack/tomcat/temp/builder/sap.cds.mta/builds/build-613759045432733771/wave/srv/my-service.cds": "using my.bookshop.BookSaleVw as BS from '../db/data-model';\n\nservice CatalogService {\n  \n  entity BookInfo {\n    key ID : Integer;\n    copiesSold: Integer;\n  };\n  \n  \n  entity BSVW @(\n\ttitle: 'abcd',\n\tCapabilities: {\n\t\tInsertRestrictions: { Insertable: false },\n\t\tUpdateRestrictions: { Updatable: false },\n\t\tDeleteRestrictions: { Deletable: false }\n\t}\n  ) as projection on BS;\n  \n}",
+    "/hana/shared/HXE/xs/controller_data/executionagent/executionroot/573318fb-5424-4e79-a854-40c1096512c2/app/META-INF/.sap_java_buildpack/tomcat/temp/builder/sap.cds.mta/builds/build-613759045432733771/wave/db/data-model.cds": "namespace my.bookshop;\n\nentity Books {\n  key ID : Integer;\n  title  : String;\n  stock  : Integer;\n};\n\nentity BookSale {\n\tkey ID : Integer;\n\tbook : Association to Books;\n    copiesSold: Integer;\n    purchaseDate : Date;\n};\n\ndefine view BookSaleVw as\nselect from BookSale {\n\tID, \n\tcopiesSold, \n\tpurchaseDate,\n\tbook.title, \n\tbook.stock\n};\n\n"
+  },
+  "dependencies": {
+    "/hana/shared/HXE/xs/controller_data/executionagent/executionroot/573318fb-5424-4e79-a854-40c1096512c2/app/META-INF/.sap_java_buildpack/tomcat/temp/builder/sap.cds.mta/builds/build-613759045432733771/wave/srv/my-service.cds": {
+      "../db/data-model": "/hana/shared/HXE/xs/controller_data/executionagent/executionroot/573318fb-5424-4e79-a854-40c1096512c2/app/META-INF/.sap_java_buildpack/tomcat/temp/builder/sap.cds.mta/builds/build-613759045432733771/wave/db/data-model.cds"
+    }
+  },
+  "files": [
+    "/hana/shared/HXE/xs/controller_data/executionagent/executionroot/573318fb-5424-4e79-a854-40c1096512c2/app/META-INF/.sap_java_buildpack/tomcat/temp/builder/sap.cds.mta/builds/build-613759045432733771/wave/srv/my-service.cds"
+  ]
+}
